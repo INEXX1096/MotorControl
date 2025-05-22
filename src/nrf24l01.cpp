@@ -55,6 +55,23 @@ void NRF24L01::setRxAddress(uint8_t* address, uint8_t length){
 
 }
 
+void NRF24L01::setRxMode(){
+    uint8_t config = readRegister(0x00);
+    config |= (1 << 0);  
+    writeRegister(0x00, config);
+    cePin = 1;
+
+}
+
+void NRF24L01::setTxMode(){
+    uint8_t config = readRegister(0x00);
+    config &= ~(1 << 0);
+    writeRegister(0x00, config);
+    cePin = 0;
+}
+
+
+
 //从tx端传输payload的数据
 void NRF24L01::sendPayload(uint8_t* data, uint8_t length){
     //清空
