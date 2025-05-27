@@ -3,10 +3,11 @@
 #include "ps2.h"
 
 //NRF24L01(mosi,  miso,  sck,  csn,  ce)
-NRF24L01 radio(D11, D12, D13, D2, D3);
+//NRF24L01 radio(D11, D12, D13, D2, D3);
 //PS2(clk, cmd(DO), dat(D1), cs)
-PS2 ps2_device(PD_1, PD_4, PD_3, PD_5);
-// PS2 ps2_device(PA_0, PA_2, PA_3, PA_1);
+//PS2 ps2_device(PD_1, PD_4, PD_3, PD_5);
+//	PA3 (D4) 	PB2 (D8) PA4 (D7) PD15 (D2)
+PS2 ps2_device(PA_4, PA_3, PB_2, PD_15);
 
 BufferedSerial pc(USBTX, USBRX, 115200);
 
